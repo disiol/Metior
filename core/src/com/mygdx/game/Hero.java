@@ -16,7 +16,7 @@ public class Hero {
 
     public static final int Y = Size.HEIGHT;
     public static final int X = Size.WIDTH;
-    public static final int HERO_Y_SIZE = 55;
+    public static final int HERO_Y_SIZE = 50;
     public static final int HERO_X_SIZE = 70;
     public static final int HERO_Y_POSITION = 10;
     public static final int HERO_X_POSITION = 10;
@@ -43,7 +43,7 @@ public class Hero {
 
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            if (position.y >= 0 + HERO_X_POSITION) {
+            if (position.y >= 0 + HERO_Y_POSITION) {
                 position.y -= speed;
             }
         }
@@ -53,7 +53,7 @@ public class Hero {
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            if (position.x >= 0 + HERO_Y_POSITION) {
+            if (position.x >= 0 + HERO_X_POSITION) {
                 position.x -= speed;
             }
         }
