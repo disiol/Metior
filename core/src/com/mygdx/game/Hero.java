@@ -17,7 +17,7 @@ public class Hero {
     public static final int Y = Size.HEIGHT;
     public static final int X = Size.WIDTH;
     public static final int HERO_Y_SIZE = 50;
-    public static final int HERO_X_SIZE = 70;
+    public static final int HERO_X_SIZE = 90;
     public static final int HERO_Y_POSITION = 10;
     public static final int HERO_X_POSITION = 10;
     private Texture textureHero;
@@ -26,7 +26,7 @@ public class Hero {
 
     public Hero() {
         textureHero = new Texture("hero 80*60_2.jpg");
-        position = new Vector2(100, 100);
+        position = new Vector2(1000, 100);
         speed = 10.0f;
     }
 
