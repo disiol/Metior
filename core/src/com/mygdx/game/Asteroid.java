@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -40,6 +41,11 @@ public class Asteroid {
 
     }
 
+
+    public void render(SpriteBatch batch) {
+        batch.draw(textureAsteroid, position.x, position.y);
+
+    }
     private void recreate() {
         position = new Vector2((float) Math.random() * X, (float) Math.random() * Y);
         speedAsteroid();
