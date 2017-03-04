@@ -36,6 +36,7 @@ public class Hero {
     }
 
     public void updateHero() {
+        //TODO
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             if (position.y <= Y - HERO_Y_SIZE) {
                 position.y += speed;

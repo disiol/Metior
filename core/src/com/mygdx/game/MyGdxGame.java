@@ -9,17 +9,23 @@ public class MyGdxGame extends ApplicationAdapter {
     SpriteBatch batch;
     Background background;
     Hero hero;
-    private final int ASTEROIDS_CAUNTER = 30;
+    private final int ASTEROIDS_COUNTER = 30;
     Asteroid[] asteroids;
+    private final int BULLET_COUNTER = 100;
+    //TODO
+    public static Bullet[] bullets;//упрощение сделать понормальому
 
     @Override
     public void create() {
         batch = new SpriteBatch();
         background = new Background();
         hero = new Hero();
-        asteroids = new Asteroid[ASTEROIDS_CAUNTER];
-        for (int i = 0; i <ASTEROIDS_CAUNTER; i++){
+        asteroids = new Asteroid[ASTEROIDS_COUNTER];
+        for (int i = 0; i < ASTEROIDS_COUNTER; i++){
             asteroids[i] = new Asteroid();
+        }
+        for (int i = 0; i < BULLET_COUNTER; i++) {
+            bullets[i] = new Bullet();
         }
 
 
@@ -33,7 +39,7 @@ public class MyGdxGame extends ApplicationAdapter {
         batch.begin();
         background.render(batch);
         hero.render(batch);
-        for (int i = 0; i <ASTEROIDS_CAUNTER; i++){
+        for (int i = 0; i < ASTEROIDS_COUNTER; i++){
             asteroids[i].render(batch);
         }
         updateMyGdxGame();
@@ -45,7 +51,7 @@ public class MyGdxGame extends ApplicationAdapter {
     public void updateMyGdxGame() {
         background.updateBackground();
         hero.updateHero();
-        for (int i = 0; i <ASTEROIDS_CAUNTER; i++){
+        for (int i = 0; i < ASTEROIDS_COUNTER; i++){
             asteroids[i].updateAsteroid();
         }
 
