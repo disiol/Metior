@@ -15,7 +15,7 @@ public class Asteroid {
     //TODO
     public static final int DELAY = 60;
     public static final int X = Size.WIDTH + DELAY;
-    public static final int Y = Size.HEIGHT + DELAY;
+    public static final int Y = Size.HEIGHT;
     private Vector2 position;
     private float speed;
     private static Texture textureAsteroid;
@@ -31,11 +31,11 @@ public class Asteroid {
 
 
     public Asteroid() {
-        position = new Vector2((float) Math.random() * X, (float) Math.random() * Y);
+        position = new Vector2(X + (float) Math.random() * X, (float) Math.random() * Y);
         speedAsteroid();
-        rectangle = new Rectangle(position.x,position.y,60,60);
+        rectangle = new Rectangle(position.x, position.y, 60, 60);
         if (textureAsteroid == null) {
-            textureAsteroid = new Texture("Asteroid60.jpg");
+            textureAsteroid = new Texture("Asteroid60_1.tga");
         }
 
 
@@ -46,6 +46,7 @@ public class Asteroid {
         batch.draw(textureAsteroid, position.x, position.y);
 
     }
+
     private void recreate() {
         position = new Vector2((float) Math.random() * X, (float) Math.random() * Y);
         speedAsteroid();

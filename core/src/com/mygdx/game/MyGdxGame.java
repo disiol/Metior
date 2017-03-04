@@ -45,6 +45,9 @@ public class MyGdxGame extends ApplicationAdapter {
     public void updateMyGdxGame() {
         background.updateBackground();
         hero.updateHero();
+        for (int i = 0; i <ASTEROIDS_CAUNTER; i++){
+            asteroids[i].updateAsteroid();
+        }
 
 
     }
