@@ -11,7 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 public class Background {
 
     class Star {
-        //TODO
+
         public static final int X = Size.WIDTH;
         public static final int Y = Size.HEIGHT;
         private Vector2 position;
