@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MyGdxGame extends ApplicationAdapter {
@@ -11,9 +12,11 @@ public class MyGdxGame extends ApplicationAdapter {
     Hero hero;
     private final int ASTEROIDS_COUNTER = 30;
     Asteroid[] asteroids;
-    private final int BULLET_COUNTER = 100;
+    private final int BULLETS_COUNT = 100;
     //TODO
     public static Bullet[] bullets;//упрощение сделать понормальому
+    private Texture textureBullet;
+
 
     @Override
     public void create() {
@@ -21,12 +24,14 @@ public class MyGdxGame extends ApplicationAdapter {
         background = new Background();
         hero = new Hero();
         asteroids = new Asteroid[ASTEROIDS_COUNTER];
-        for (int i = 0; i < ASTEROIDS_COUNTER; i++){
+        for (int i = 0; i < ASTEROIDS_COUNTER; i++) {
             asteroids[i] = new Asteroid();
         }
-        for (int i = 0; i < BULLET_COUNTER; i++) {
+        for (int i = 0; i < BULLETS_COUNT; i++) {
             bullets[i] = new Bullet();
         }
+
+        textureBullet = new Texture("bullet20.png");
 
 
     }
@@ -39,19 +44,23 @@ public class MyGdxGame extends ApplicationAdapter {
         batch.begin();
         background.render(batch);
         hero.render(batch);
-        for (int i = 0; i < ASTEROIDS_COUNTER; i++){
+        for (int i = 0; i < ASTEROIDS_COUNTER; i++) {
             asteroids[i].render(batch);
         }
-        updateMyGdxGame();
-        batch.end();
+        for (int i = 0; i < BULLETS_COUNT; i++) {
+            if (bullets[i].isActive())
+                batch.draw(textureBullet, bullets[i].getPosition().x, bullets[i].getPosition().y);
+            updateMyGdxGame();
+            batch.end();
 
 
+        }
     }
 
     public void updateMyGdxGame() {
         background.updateBackground();
         hero.updateHero();
-        for (int i = 0; i < ASTEROIDS_COUNTER; i++){
+        for (int i = 0; i < ASTEROIDS_COUNTER; i++) {
             asteroids[i].updateAsteroid();
         }
 
