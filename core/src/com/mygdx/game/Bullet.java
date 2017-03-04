@@ -13,6 +13,16 @@ public class Bullet {
     private float speed;
     private boolean active;
 
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public Vector2 getPosition() {
+        return position;
+    }
+
+
     public Bullet() {
         position = new Vector2(0, 0);
         speedBullet();
@@ -24,9 +34,9 @@ public class Bullet {
         active = false;
     }
 
-    public void setatp(int x, int y){
+    public void setatp(int x, int y) {
         position.x = x;
-        position.y= y;
+        position.y = y;
 
     }
 
@@ -43,4 +53,6 @@ public class Bullet {
     private void speedBullet() {
         speed = 20.0f;
     }
+
+
 }
