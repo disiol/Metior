@@ -25,7 +25,7 @@ public class Bullet {
 
     public Bullet() {
         position = new Vector2(0, 0);
-        speedBullet();
+        speed = 20.0f;
         active = false;
 
     }
@@ -34,9 +34,10 @@ public class Bullet {
         active = false;
     }
 
-    public void setatp(int x, int y) {
+    public void setup(float x, float y) {
         position.x = x;
         position.y = y;
+        active = true;
 
     }
 
@@ -50,9 +51,7 @@ public class Bullet {
 
     }
 
-    private void speedBullet() {
-        speed = 20.0f;
-    }
+
 
 
 }

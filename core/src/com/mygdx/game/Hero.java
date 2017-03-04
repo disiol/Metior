@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 
-
 /**
  * Created by Denis Oleynyk on 03.03.17.
  * Mail deoniisii@gamal.com
@@ -23,11 +22,14 @@ public class Hero {
     private Texture textureHero;
     private Vector2 position;
     private float speed;
+    private int fireRate;
+    private int fireCounter;
 
     public Hero() {
         textureHero = new Texture("hero 80*60_2.jpg");
         position = new Vector2(100, 100);
         speed = 10.0f;
+        fireRate = 4;
     }
 
     public void render(SpriteBatch batch) {
@@ -36,7 +38,15 @@ public class Hero {
     }
 
     public void updateHero() {
-        //TODO
+
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+            fireCounter++;
+            if(fireCounter > fireRate){
+                fireCounter = 0;
+                fire(position.x, position.y);
+            }
+
+        }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             if (position.y <= Y - HERO_Y_SIZE) {
                 position.y += speed;
@@ -58,8 +68,15 @@ public class Hero {
                 position.x -= speed;
             }
         }
+    }
 
-
+    public void fire(float x, float y) {
+        for (int i = 0; i < MyGdxGame.bullets.length; i++) {
+            if (!MyGdxGame.bullets[i].isActive()) {
+                MyGdxGame.bullets[i].setup(x, y);
+                break;
+            }
+        }
     }
 
 }

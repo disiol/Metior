@@ -27,6 +27,7 @@ public class MyGdxGame extends ApplicationAdapter {
         for (int i = 0; i < ASTEROIDS_COUNTER; i++) {
             asteroids[i] = new Asteroid();
         }
+        bullets = new Bullet[BULLETS_COUNT];
         for (int i = 0; i < BULLETS_COUNT; i++) {
             bullets[i] = new Bullet();
         }
@@ -50,11 +51,10 @@ public class MyGdxGame extends ApplicationAdapter {
         for (int i = 0; i < BULLETS_COUNT; i++) {
             if (bullets[i].isActive())
                 batch.draw(textureBullet, bullets[i].getPosition().x, bullets[i].getPosition().y);
-            updateMyGdxGame();
-            batch.end();
-
-
         }
+        updateMyGdxGame();
+        batch.end();
+
     }
 
     public void updateMyGdxGame() {
@@ -62,6 +62,11 @@ public class MyGdxGame extends ApplicationAdapter {
         hero.updateHero();
         for (int i = 0; i < ASTEROIDS_COUNTER; i++) {
             asteroids[i].updateAsteroid();
+        }
+        for (int i = 0; i < BULLETS_COUNT; i++) {
+            if (bullets[i].isActive()) {
+                bullets[i].updateBullet();
+            }
         }
 
 
