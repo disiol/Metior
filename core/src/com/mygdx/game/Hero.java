@@ -41,9 +41,14 @@ public class Hero {
 
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
             fireCounter++;
-            if(fireCounter > fireRate){
+            if (fireCounter > fireRate) {
                 fireCounter = 0;
-                fire(position.x, position.y);
+                fire(position.x + 40, position.y + 10);
+                //TODO
+                // реализовать вылет 3 пуль
+//                fire(position.x + 40, position.y + 5);
+//                fire(position.x + 40, position.y);
+
             }
 
         }
