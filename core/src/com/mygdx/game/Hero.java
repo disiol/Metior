@@ -30,7 +30,7 @@ public class Hero {
         position = new Vector2(100, 100);
         //TODO
         speed = 10.0f;// сделать привязку к дельта тайм(какдр в сек)
-        fireRate = 4;
+        fireRate = 20;
     }
 
     public void render(SpriteBatch batch) {
@@ -40,10 +40,16 @@ public class Hero {
 
     public void updateHero() {
 
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+            if (fireCounter <= 0) {
+                fireCounter = 20;
+            }
+        }
+
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
             fireCounter++;
             if (fireCounter > fireRate) {
-                fireCounter = 0;
+                fireCounter = 1;
                 fire(position.x + 40, position.y + 10);
                 //TODO
                 // реализовать вылет 3 пуль
