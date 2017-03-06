@@ -24,7 +24,7 @@ public class Hero {
     private float speed;
     private int fireRate;
     private int fireCounter;
-    private int rate = 20;
+    private int rate = 5;
 
     public Hero() {
         textureHero = new Texture("hero 80*60_2.jpg");
