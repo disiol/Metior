@@ -28,7 +28,8 @@ public class Hero {
     public Hero() {
         textureHero = new Texture("hero 80*60_2.jpg");
         position = new Vector2(100, 100);
-        speed = 10.0f;
+        //TODO
+        speed = 10.0f;// сделать привязку к дельта тайм(какдр в сек)
         fireRate = 4;
     }
 

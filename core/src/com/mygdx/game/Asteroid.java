@@ -65,6 +65,8 @@ public class Asteroid {
 
 
     private void speedAsteroid() {
+        //TODO
+        //дпрвязку к дельта кадру
         speed = 4.0f * (float) Math.random() * 8.0f;
     }
 
