@@ -47,7 +47,7 @@ public class Asteroid {
 
     }
 
-    private void recreate() {
+    public void recreate() {
         position = new Vector2((float) Math.random() * X, (float) Math.random() * Y);
         speedAsteroid();
     }

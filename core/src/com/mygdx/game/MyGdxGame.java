@@ -16,6 +16,7 @@ public class MyGdxGame extends ApplicationAdapter {
     //TODO
     public static Bullet[] bullets;//упрощение сделать понормальому
     private Texture textureBullet;
+    private int destroryAsteroidsCounter;// реализовать вывод сщетчика на екран
 
 
     @Override
@@ -66,6 +67,18 @@ public class MyGdxGame extends ApplicationAdapter {
         for (int i = 0; i < BULLETS_COUNT; i++) {
             if (bullets[i].isActive()) {
                 bullets[i].updateBullet();
+                for (int j = 0; j < ASTEROIDS_COUNTER; j++) {
+                    if(asteroids[j].getRectangle().contains(bullets[i].getPosition())){
+                        bullets[i].destroy();
+                        asteroids[j].recreate();
+                        //TODO
+                        destroryAsteroidsCounter++;
+                        break;
+                    }
+
+                }
+
+
             }
         }
 
