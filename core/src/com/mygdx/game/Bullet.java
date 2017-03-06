@@ -25,7 +25,7 @@ public class Bullet {
 
     public Bullet() {
         position = new Vector2(0, 0);
-        speed = 20.0f;
+        speed = 20.0f;// сделать привязку к дельта тайм(какдр в сек)
         active = false;
 
     }

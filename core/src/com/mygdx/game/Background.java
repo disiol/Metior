@@ -38,7 +38,8 @@ public class Background {
 
         private void speedStar() {
             speed = 5.0f * (float) Math.random() * 9.0f;
-        }
+            //TODO
+        }// сделать привязку к дельта тайм(какдр в сек)
     }
 
     private Texture textureBackground;

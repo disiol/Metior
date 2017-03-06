@@ -12,7 +12,7 @@ public class MyGdxGame extends ApplicationAdapter {
     Hero hero;
     private final int ASTEROIDS_COUNTER = 30;
     Asteroid[] asteroids;
-    private final int BULLETS_COUNT = 100;
+    private final int BULLETS_COUNT = 200;
     //TODO
     public static Bullet[] bullets;//упрощение сделать понормальому
     private Texture textureBullet;
