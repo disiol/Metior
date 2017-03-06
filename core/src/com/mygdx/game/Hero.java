@@ -24,13 +24,14 @@ public class Hero {
     private float speed;
     private int fireRate;
     private int fireCounter;
+    private int rate = 20;
 
     public Hero() {
         textureHero = new Texture("hero 80*60_2.jpg");
         position = new Vector2(100, 100);
         //TODO
         speed = 10.0f;// сделать привязку к дельта тайм(какдр в сек)
-        fireRate = 20;
+        fireRate = rate;
     }
 
     public void render(SpriteBatch batch) {
@@ -42,7 +43,7 @@ public class Hero {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             if (fireCounter <= 0) {
-                fireCounter = 20;
+                fireCounter = rate;
             }
         }
 
