@@ -68,9 +68,9 @@ public class MyGdxGame extends ApplicationAdapter {
             if (bullets[i].isActive()) {
                 bullets[i].updateBullet(deltaTime);
                 for (int j = 0; j < ASTEROIDS_COUNTER; j++) {
-                    if(asteroids[j].getRectangle().contains(bullets[i].getPosition())){
+                    if (asteroids[j].getRectangle().contains(bullets[i].getPosition())) {
                         bullets[i].destroy();
-                        asteroids[j].recreate();
+                        asteroids[j].getDamage(1);
                         //TODO
                         destroryAsteroidsCounter++;
                         break;

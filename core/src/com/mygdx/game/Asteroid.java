@@ -20,6 +20,8 @@ public class Asteroid {
     private float speed;
     private static Texture textureAsteroid;
     private Rectangle rectangle;
+    private float angle;
+    private int hp;
 
     public Vector2 getPosition() {
         return position;
@@ -34,8 +36,9 @@ public class Asteroid {
         position = new Vector2(X + (float) Math.random() * X, (float) Math.random() * Y);
         speedAsteroid();
         rectangle = new Rectangle(position.x, position.y, 60, 60);
+        hp = 10;
         if (textureAsteroid == null) {
-            textureAsteroid = new Texture("Asteroid60_1.tga");
+            textureAsteroid = new Texture("asteroid60.tga");
         }
 
 
@@ -43,17 +46,27 @@ public class Asteroid {
 
 
     public void render(SpriteBatch batch) {
-        batch.draw(textureAsteroid, position.x, position.y);
-
+        //batch.draw(textureAsteroid, position.x, position.y);
+        batch.draw(textureAsteroid, position.x, position.y, 30, 30, 60, 60, 1.0f,
+                1.0f, angle, 0, 0, 60, 60, false, false);
     }
 
     public void recreate() {
         position = new Vector2((float) Math.random() * X, (float) Math.random() * Y);
         speedAsteroid();
+        angle = (float) Math.random() * 360;
+    }
+
+    public void getDamage(int dmg) {
+        hp -= dmg;
+        if (hp <= 0) {
+            recreate();
+        }
     }
 
     public void updateAsteroid(float deltaTime) {
         position.x -= speed * deltaTime;
+        angle += speed * deltaTime / 2;
         if (position.x < -DELAY) {
             recreate();
         }
@@ -65,7 +78,7 @@ public class Asteroid {
 
 
     private void speedAsteroid() {
-        speed = 50.0f * (float) Math.random() * 9.0f;
+        speed = 50.0f * (float) Math.random() * 10.0f;
     }
 
 
