@@ -40,7 +40,8 @@ public class MyGdxGame extends ApplicationAdapter {
 
     @Override
     public void render() {
-
+        float deltaTime = Gdx.graphics.getDeltaTime();
+        updateMyGdxGame(deltaTime);
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
@@ -53,20 +54,19 @@ public class MyGdxGame extends ApplicationAdapter {
             if (bullets[i].isActive())
                 batch.draw(textureBullet, bullets[i].getPosition().x, bullets[i].getPosition().y);
         }
-        updateMyGdxGame();
         batch.end();
 
     }
 
-    public void updateMyGdxGame() {
-        background.updateBackground();
-        hero.updateHero();
+    public void updateMyGdxGame(float deltaTime) {
+        background.updateBackground(deltaTime);
+        hero.updateHero(deltaTime);
         for (int i = 0; i < ASTEROIDS_COUNTER; i++) {
-            asteroids[i].updateAsteroid();
+            asteroids[i].updateAsteroid(deltaTime);
         }
         for (int i = 0; i < BULLETS_COUNT; i++) {
             if (bullets[i].isActive()) {
-                bullets[i].updateBullet();
+                bullets[i].updateBullet(deltaTime);
                 for (int j = 0; j < ASTEROIDS_COUNTER; j++) {
                     if(asteroids[j].getRectangle().contains(bullets[i].getPosition())){
                         bullets[i].destroy();

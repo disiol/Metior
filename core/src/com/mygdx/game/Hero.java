@@ -24,13 +24,13 @@ public class Hero {
     private float speed;
     private int fireRate;
     private int fireCounter;
-    private int rate = 5;
+    private int rate = 4;
 
     public Hero() {
         textureHero = new Texture("hero 80*60_2.jpg");
         position = new Vector2(100, 100);
         //TODO
-        speed = 10.0f;// сделать привязку к дельта тайм(какдр в сек)
+        speed = 400.0f;
         fireRate = rate;
     }
 
@@ -39,11 +39,11 @@ public class Hero {
 
     }
 
-    public void updateHero() {
+    public void updateHero(float deltaTime) {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             if (fireCounter <= 0) {
-                fireCounter = rate;
+                fireCounter = (int) (rate * deltaTime);
             }
         }
 
@@ -62,23 +62,23 @@ public class Hero {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             if (position.y <= Y - HERO_Y_SIZE) {
-                position.y += speed;
+                position.y += speed * deltaTime;
             }
 
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             if (position.y >= 0 + HERO_Y_POSITION) {
-                position.y -= speed;
+                position.y -= speed * deltaTime;
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             if (position.x <= X - HERO_X_SIZE) {
-                position.x += speed;
+                position.x += speed * deltaTime;
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             if (position.x >= 0 + HERO_X_POSITION) {
-                position.x -= speed;
+                position.x -= speed * deltaTime;
             }
         }
     }

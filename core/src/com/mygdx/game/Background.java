@@ -19,28 +19,29 @@ public class Background {
 
         public Star() {
             position = new Vector2((float) Math.random() * X, (float) Math.random() * Y);
-            speedStar();
+            speed = speedStar();
 
 
         }
 
-        public void updateStar() {
-            position.x -= speed;
+        public void updateStar(float deltaTime) {
+            position.x -= speed * deltaTime;
             if (position.x < -20) {
                 position.x = X;
                 position.y = (float) (Math.random() * Y);
-                speedStar();
+                speed = speedStar() * deltaTime;
 
             }
 
 
         }
 
-        private void speedStar() {
-            speed = 5.0f * (float) Math.random() * 9.0f;
-            //TODO
-        }// сделать привязку к дельта тайм(какдр в сек)
+        private float speedStar() {
+            speed = 100.0f * (float) Math.random() * 9.0f;
+            return speed;
+        }
     }
+
 
     private Texture textureBackground;
     private static Texture textureStar;
@@ -65,9 +66,9 @@ public class Background {
         }
     }
 
-    public void updateBackground() {
+    public void updateBackground(float deltaTime) {
         for (int i = 0; i < STARS_COUNT; i++) {
-            stars[i].updateStar();
+            stars[i].updateStar(deltaTime);
 
         }
     }
