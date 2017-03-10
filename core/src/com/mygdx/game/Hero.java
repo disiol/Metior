@@ -16,7 +16,7 @@ public class Hero {
     public static final int Y = Size.HEIGHT;
     public static final int X = Size.WIDTH;
     public static final int HERO_Y_SIZE = 50;
-    public static final int HERO_X_SIZE = 90;
+    public static final int HERO_X_SIZE = 80;
     public static final int HERO_Y_POSITION = 10;
     public static final int HERO_X_POSITION = 10;
     private Texture textureHero;
@@ -24,7 +24,7 @@ public class Hero {
     private float speed;
     private int fireRate;
     private int fireCounter;
-    private int rate = 4;
+    private int rate = 2;
 
     public Hero() {
         textureHero = new Texture("hero 80*60_2.jpg");
@@ -61,25 +61,30 @@ public class Hero {
 
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            if (position.y <= Y - HERO_Y_SIZE) {
-                position.y += speed * deltaTime;
+            position.y += speed * deltaTime;
+            if (position.y > Y) {
+                position.y = -60;
             }
 
         }
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            if (position.y >= 0 + HERO_Y_POSITION) {
-                position.y -= speed * deltaTime;
-            }
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            if (position.x <= X - HERO_X_SIZE) {
-                position.x += speed * deltaTime;
+            position.y -= speed * deltaTime;
+            if (position.y < -60) {
+                position.y = Y;
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            if (position.x >= 0 + HERO_X_POSITION) {
-                position.x -= speed * deltaTime;
+            position.x -= speed * deltaTime;
+            if (position.x < 0) {
+                position.x = 0;
             }
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            position.x += speed * deltaTime;
+            if (position.x > X - HERO_X_SIZE) {
+                position.x = X - HERO_X_SIZE;
+            }
+
         }
     }
 
