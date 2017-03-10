@@ -52,8 +52,8 @@ public class Asteroid {
         speedAsteroid();
     }
 
-    public void updateAsteroid() {
-        position.x -= speed;
+    public void updateAsteroid(float deltaTime) {
+        position.x -= speed * deltaTime;
         if (position.x < -DELAY) {
             recreate();
         }
@@ -65,9 +65,7 @@ public class Asteroid {
 
 
     private void speedAsteroid() {
-        //TODO
-        //дпрвязку к дельта кадру
-        speed = 4.0f * (float) Math.random() * 8.0f;
+        speed = 50.0f * (float) Math.random() * 9.0f;
     }
 
 
