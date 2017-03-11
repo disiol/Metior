@@ -22,6 +22,7 @@ public class Asteroid {
     private Rectangle rectangle;
     private float angle;
     private int hp;
+    private int startHp = 10;
 
     public Vector2 getPosition() {
         return position;
@@ -36,15 +37,15 @@ public class Asteroid {
         position = new Vector2(X + (float) Math.random() * X, (float) Math.random() * Y);
         speedAsteroid();
         rectangle = new Rectangle(position.x, position.y, 60, 60);
-        hp = 10;
+        hp = startHp;
         if (textureAsteroid == null) {
-            textureAsteroid = new Texture("asteroid60.tga");
+            textureAsteroid = new Texture("Asteroid60.jpg");
         }
 
 
     }
 
-    public int getHP(){
+    public int getHP() {
         return hp;
     }
 
@@ -59,13 +60,18 @@ public class Asteroid {
         position = new Vector2((float) Math.random() * X, (float) Math.random() * Y);
         speedAsteroid();
         angle = (float) Math.random() * 360;
+
     }
 
     public void getDamage(int dmg) {
         hp -= dmg;
-        if (hp <= 0) {
+        if (hp == 0) {
             recreate();
         }
+        if (hp < 0) {
+            hp = startHp;
+        }
+
 
     }
 
@@ -83,7 +89,8 @@ public class Asteroid {
 
 
     private void speedAsteroid() {
-        speed = 50.0f * (float) Math.random() * 10.0f;
+       speed = 50.0f * (float) Math.random() * 10.0f;
+
     }
 
 
