@@ -44,6 +44,10 @@ public class Asteroid {
 
     }
 
+    public int getHP(){
+        return hp;
+    }
+
 
     public void render(SpriteBatch batch) {
         //batch.draw(textureAsteroid, position.x, position.y);
@@ -62,6 +66,7 @@ public class Asteroid {
         if (hp <= 0) {
             recreate();
         }
+
     }
 
     public void updateAsteroid(float deltaTime) {
