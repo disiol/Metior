@@ -24,7 +24,7 @@ public class Hero {
     private float speed;
     private int fireRate;
     private int fireCounter;
-    private int rate = 2;
+    private int rate = 5;
 
     public Hero() {
         textureHero = new Texture("hero 80*60_2.jpg");
@@ -42,8 +42,8 @@ public class Hero {
     public void updateHero(float deltaTime) {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            if (fireCounter <= 0) {
-                fireCounter = (int) (rate * deltaTime);
+            if (fireCounter == 0) {
+                fire(position.x + 40, position.y + 10);
             }
         }
 
